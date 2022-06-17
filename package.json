@@ -1,6 +1,6 @@
 {
   "name": "@fathym-devkit/package-json-deploy-webpack-plugin",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A webpack plugin used for replicating and modifying package.json into build directory for use in deploy commands.",
   "main": "build/index.js",
   "scripts": {
