@@ -1,6 +1,5 @@
 var path = require('path');
 var { validate } = require('schema-utils');
-var packageJson = require('../../package.json');
 
 class PackageJsonDeploy {
   //#region Constants
@@ -10,6 +9,7 @@ class PackageJsonDeploy {
       name: null,
       version: null,
     },
+    PackageJson: null
   };
 
   static OptionsSchema = {
@@ -17,6 +17,7 @@ class PackageJsonDeploy {
     properties: {
       OutputTo: { type: 'string' },
       PackageFormat: { type: 'object' },
+      PackageJson: { type: 'object' },
     },
   };
   //#endregion
@@ -66,7 +67,7 @@ class PackageJsonDeploy {
             const formatValue = this.options.PackageFormat[key];
 
             newPackageJson[key] =
-              formatValue != null ? formatValue : packageJson[key];
+              formatValue != null ? formatValue : this.options.PackageJson[key];
           });
 
           compilation.emitAsset(
